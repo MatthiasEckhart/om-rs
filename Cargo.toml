@@ -1,0 +1,34 @@
+[package]
+name = "om-rs"
+version = "0.1.0"
+authors = ["Matthias Eckhart <meckhart@sba-research.org>"]
+edition = "2018"
+readme = "README.md"
+
+include = [
+    "/Cargo.toml",
+    "/../README.md",
+    "/src/*.rs",
+]
+
+[lib]
+name = "om_rs"
+path = "src/lib.rs"
+crate_type = ["lib"]
+
+[dependencies]
+thiserror = "1.0"
+log = "0.4.14"
+whoami = "1.2.3"
+zeromq = {version = "*", default-features = false, features = [
+    "tokio-runtime",
+    "tcp-transport",
+]}
+uuid = {version = "1.1.2", features = [
+    "v4",                # Lets you generate random UUIDs
+    "fast-rng",          # Use a faster (but still sufficiently random) RNG
+    "macro-diagnostics", # Enable better diagnostics for compile-time UUIDs
+]}
+tokio = { version = "1", features = ["rt"] }
+tokio-util = "0.7.4"
+bytes = "1"
